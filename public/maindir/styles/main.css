@@ -67,9 +67,10 @@
 }
 
 .maca1 {
-    font-size: 1.125rem/* 18px */;
+    font-size: 1rem/* 18px */;
     line-height: 1.75rem/* 28px */;
     --tw-text-opacity: 1;
+    font-weight: 300;
     color: rgb(156 163 175 / var(--tw-text-opacity));
     @apply text-lg text-gray-400;
 }
@@ -313,6 +314,8 @@
     color: #027dbfbc; 
 }
 
+#vs { display: none;}
+
 
 
 
@@ -323,6 +326,13 @@
 
 /* @media all and (max-width: 900px) { */
 @media (max-width: 1200px) {
+
+    #vs { display: block;}
+    #vl { display: none;}
+
+    .row-left p {
+        width: 100%;
+    }
 
     .sign-up-image {
         width: 60%;
@@ -335,7 +345,12 @@
     }
 
     .pay-details-card {
-        margin: 0rem 3rem;
+        margin: 2rem 2rem;
+    }
+
+    .row-left {
+        padding-left: 2rem;
+        border-radius: 0.5rem 0.5rem 0 0;
     }
 
     .row-right {
@@ -344,5 +359,9 @@
 
     .row-right p {
         width: 100%;
+    }
+    .image-promo {
+        max-width: 70vw;
+        margin: 0rem/* -64px */;
     }
 }

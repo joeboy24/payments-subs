@@ -18,7 +18,8 @@
                     @endif
                     <span>/ Year</span></h2>
                 <span class="billing-period">Billing Period: Yearly</span>
-                <img class="image-promo" src="/maindir/images/offer-card.png" alt="">
+                <img id="vl" class="image-promo" src="/maindir/images/offer-card.png" alt="">
+                <img id="vs" class="image-promo" src="/maindir/images/offer-card3.png" alt="">
             </div>
             
             <div class="col-md-6 row-right">
