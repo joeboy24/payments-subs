@@ -35,7 +35,7 @@
     @apply right-0 absolute;
 }
 
-.navbar-right a {
+.navbar-right a, .gen-link {
     --tw-text-opacity: 1;
     color: rgb(139 92 246 / var(--tw-text-opacity));
     padding-left: 0.5rem/* 8px */;
@@ -52,7 +52,7 @@
     hover:text-violet-400;
 }
 
-.navbar-right a:hover {
+.navbar-right a:hover, .gen-link:hover {
     --tw-text-opacity: 1;
     color: rgb(167 139 250 / var(--tw-text-opacity));
 }
@@ -297,6 +297,20 @@
 
 .pay-error {
     color: #ff0000!important;
+}
+
+.alert-notification {
+    color: #00a6ffa0;
+    background-color: #00a6ff15;
+    border-color: #00a6ffa0; 
+}
+    
+.alert-notification hr {
+    border-top-color: #008edaa0; 
+}
+
+.alert-notification{
+    color: #027dbfbc; 
 }
 
 

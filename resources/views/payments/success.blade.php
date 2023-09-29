@@ -17,6 +17,7 @@
                         {{-- <div> --}}
                             <p class="pay-success"><i class="fa fa-thumbs-o-up"></i>&nbsp; Payment Successful...</p>
                             <p>Thank you for using our services. Please contact your registrar for an electronic receipt.</p>
+                            <a class="gen-link" href="/"><i class="fa fa-angle-double-left"></i>&nbsp; Back</a>
                         {{-- </div> --}}
                     </div>
                 </div>

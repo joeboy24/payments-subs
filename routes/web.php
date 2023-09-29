@@ -25,6 +25,7 @@ use App\Models\Homepage;
 
 
 Route::get('/', 'PagesController@index'); 
+Route::get('/pass-intent', 'PagesController@passIntent'); 
 
 Route::get('/logout', 'Auth\LoginController@logout');
 Auth::routes(['register' => false]);

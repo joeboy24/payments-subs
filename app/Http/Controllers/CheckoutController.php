@@ -18,18 +18,16 @@ class CheckoutController extends Controller
 
     public function checkout(Request $request)
     {   
-        $pmt_plan = $request->input('pmt_plan');
-        $amt_due = auth()->user()->amount;
-        $amount = $pmt_plan * $amt_due;
-        Session::put('pmt_plan', $pmt_plan);
-        Session::put('amt_due', $amt_due);
-        Session::put('amount', $amount);
 
+        if (session('amount') == '' || auth()->user()->status != 'no') {
+            return redirect('/')->with('notification', '$'.number_format(auth()->user()->status, 2).' already paid');
+        }
         // Enter Your Stripe Secret
-        \Stripe\Stripe::setApiKey('sk_test_51NvMfoGUgSRZPj4WzpuqTTQTXIPOaQL4eXTTWDutFlgRiVlmXt1XsKpcswXIgQt7yQwFWk1aVwVR5sdl4BxNgzXV00fSWwpLIN');
+        \Stripe\Stripe::setApiKey('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');
+        // \Stripe\Stripe::setApiKey('sk_test_51NvMfoGUgSRZPj4WzpuqTTQTXIPOaQL4eXTTWDutFlgRiVlmXt1XsKpcswXIgQt7yQwFWk1aVwVR5sdl4BxNgzXV00fSWwpLIN');
         // \Stripe\Stripe::setApiKey('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');
       		
-		$amount = 100;
+		$amount = session('amount');
 		$amount *= 100;
         $amount = (int) $amount;
         
@@ -42,24 +40,24 @@ class CheckoutController extends Controller
 		]);
 		$intent = $payment_intent->client_secret;
 
-        // $user = User::find(auth()->user()->id);
-        // $user->plan = $pmt_plan;
-        // $user->status = $pmt_plan * $amt_due;
-        // $user->save();
-
-		return view('payments.checkout-page',compact('intent'));
+		return view('payments.checkout-page', compact('intent'));
 
     }
+
 
     public function afterPayment()
     {
 
         $user = User::find(auth()->user()->id);
         $user->plan = session('pmt_plan');
-        $user->status = session('pmt_plan') * session('amt_due');
+        $user->status = session('amount');
         $user->save();
 
+        Session::put('amount', '');
+        Session::put('pmt_plan', '');
+        Session::put('amt_due', '');
+
         return view('payments.success');
-        echo 'Payment Has been Received';
+        // 'Payment Has been Received';
     }
 }

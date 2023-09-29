@@ -22,55 +22,59 @@
             </div>
             
             <div class="col-md-6 row-right">
-                {{-- <div class=""> --}}
+                <form action="{{ url('/pass-intent') }}">
+                    @csrf  
+                    
+                    <a class="gen-link" href="{{url()->previous()}}"><i class="fa fa-angle-double-left"></i>&nbsp; Back</a>
                     <p>Pay with your credit card</p>
                     <img class="visa" src="/maindir/images/visa.png" alt="">
-                    <form action="">
-                        <div>
-                            <label for="">Company</label>
-                            <input type="text" name="company_name" value="{{auth()->user()->company}}" placeholder="Company Name" required>
-                        </div>
-                        <div>
-                            <label for="">Payment Plan</label>
-                            <select name="pmt_plan" id="">
-                                <option value="1">1 Year - ${{number_format(auth()->user()->amount, 2)}}</option>
-                                <option value="2">2 Years - ${{number_format(auth()->user()->amount * 2 - (0.125 * auth()->user()->amount), 2)}}</option>
-                            </select>
-                        </div>
-                    </form>
-                    
-                @if (auth()->user()->status == 'no')
-                        
-                    <div class="card">
-                        <form action="{{route('payments.checkout-page')}}"  method="post" id="payment-form">
-                            @csrf                    
-                            <div class="form-group">
-                                <div class="card-header">
-                                    <label for="card-element">
-                                        Enter your credit card information
-                                    </label>
-                                </div>
-                                <div class="card-body">
-                                    <div id="card-element">
-                                    <!-- A Stripe Element will be inserted here. -->
-                                    </div>
-                                    <!-- Used to display form errors. -->
-                                    <div id="card-errors" role="alert"></div>
-                                    <input type="hidden" name="plan" value="" />
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                            <button
-                            id="card-button"
-                            class="btn btn-dark"
-                            type="submit"
-                            data-secret="{{ $intent }}"
-                            > &nbsp; Pay &nbsp;<i class="fa fa-send"></i> &nbsp; </button>
-                            </div>
-                        </form>
+                    <div>
+                        <label for="">Company</label>
+                        <input type="text" name="company_name" value="{{auth()->user()->company}}" placeholder="Company Name" required>
                     </div>
+                    <div>
+                        <label for="">Payment Plan</label>
+                        <input type="text" name="company_name" value="2 Years - ${{session('amount')}}" placeholder="Company Name" readonly required>
+                        {{-- <select name="pmt_plan" id="">
+                            <option value="1">1 Year - ${{number_format(auth()->user()->amount, 2)}}</option>
+                            <option value="2">2 Years - ${{number_format((auth()->user()->amount * 2) - (0.125 * (auth()->user()->amount * 2)), 2)}}</option>
+                        </select> --}}
+                    </div>
+                </form>
+                        
+                    @if (auth()->user()->status == 'no')
+                            
+                        <div class="card">
+                            <form action="{{route('payments.checkout-page')}}"  method="post" id="payment-form">
+                                @csrf                    
+                                <div class="form-group">
+                                    <div class="card-header">
+                                        <label for="card-element">
+                                            Enter your credit card information
+                                        </label>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="card-element">
+                                        <!-- A Stripe Element will be inserted here. -->
+                                        </div>
+                                        <!-- Used to display form errors. -->
+                                        <div id="card-errors" role="alert"></div>
+                                        <input type="hidden" name="plan" value="" />
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                <button
+                                id="card-button"
+                                class="btn btn-dark"
+                                type="submit"
+                                data-secret="{{ $intent }}"
+                                > &nbsp; Pay &nbsp;<i class="fa fa-send"></i> &nbsp; </button>
+                                </div>
+                            </form>
+                        </div>
 
-                @endif
+                    @endif
+                {{-- </form> --}}
 
             </div>
         </div>
@@ -98,7 +102,8 @@
             }
         };
     
-        const stripe = Stripe('pk_test_51NvMfoGUgSRZPj4Wlk4f7cLZXfWUqos6h1VHsO81JkSr7pQo8a7zBlLDXiXC0ywDXlKXAoYmB7tCxX988E4sIg0400DdIqwPny', { locale: 'en' }); // Create a Stripe client.
+        const stripe = Stripe('pk_live_51NvMfoGUgSRZPj4WzznolUmWELYrYmwXIaEWKbEDPJXhDnJUOcCwjt7257XjJplCoSZFHQ9xe04VjDZjjYJuqVE500pEvzufYa', { locale: 'en' }); // Create a Stripe client.
+        // const stripe = Stripe('pk_test_51NvMfoGUgSRZPj4Wlk4f7cLZXfWUqos6h1VHsO81JkSr7pQo8a7zBlLDXiXC0ywDXlKXAoYmB7tCxX988E4sIg0400DdIqwPny', { locale: 'en' }); // Create a Stripe client.
         const elements = stripe.elements(); // Create an instance of Elements.
         const cardElement = elements.create('card', { style: style }); // Create an instance of the card Element.
         const cardButton = document.getElementById('card-button');
