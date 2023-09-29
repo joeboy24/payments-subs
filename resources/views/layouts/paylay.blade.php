@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         
 
-        <title>Renewals</title>
+        <title>Hosting & Renewals</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
