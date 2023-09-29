@@ -1,0 +1,104 @@
+
+.body-container {
+    /* background: #d22323; */
+    @apply  bg-gray-100;
+}
+
+.myHeader {
+    /* background: #d22323; */
+    /* @apply  bg-violet-700; */
+}
+
+.navbar-container {
+    /* background: #d22323; */
+    @apply bg-white py-7 px-40;
+}
+
+.navbar-top {
+    @apply w-full flex items-stretch relative;
+}
+
+/* .navbar-left {
+    @apply bg-gray-300;
+} */
+
+.navbar-right {
+    @apply right-0 absolute;
+}
+
+.navbar-right a {
+    @apply text-violet-500 px-2 no-underline text-sm border-0 border-r border-solid border-r-gray-300 hover:text-violet-400;
+}
+
+.country-flag {
+    @apply w-5 border-solid border border-gray-200;
+}
+
+.maca1 {
+    @apply text-lg text-gray-400;
+}
+
+.renew {
+    @apply text-2xl tracking-normal;
+}
+
+.cust-loc {
+    @apply w-auto text-xs text-gray-500 font-light border-solid border border-gray-300 float-left
+    px-3 py-1 rounded-md;
+}
+
+.pay-details-card {
+    @apply mx-40 my-12 bg-white rounded-lg shadow-lg;
+}
+
+.row-left {
+    @apply rounded-s-lg px-16 py-10;
+    background: #0285ad;
+}
+
+.row-left i {
+    @apply text-white text-3xl;
+}
+
+.row-left p {
+    @apply w-2/3 text-gray-200 text-sm tracking-normal py-2 mb-7;
+    border-bottom: 1px solid #4ca2bc;
+}
+
+.billing-period {
+    @apply text-gray-200 text-sm font-extralight tracking-normal py-1;
+}
+
+.amount-due {
+    @apply text-3xl text-white font-medium -mt-3 ;
+}
+
+.amount-due span {
+    @apply text-sm text-gray-200;
+}
+
+.image-promo {
+    @apply max-w-screen-sm -mx-16 -my-3;
+}
+
+.row-right {
+    @apply bg-white p-16;
+}
+
+.visa {
+    @apply w-3/5 my-4;
+}
+
+.row-right label {
+    @apply text-xs text-gray-400 mb-1;
+}
+
+.row-right input, .row-right select {
+    @apply w-full h-11 border-solid border border-gray-200 mb-3 px-3 rounded-md outline-black 
+    placeholder:text-gray-300 placeholder:font-light;
+}
+
+.row-right p {
+    @apply w-2/3 text-gray-400 text-sm tracking-normal py-2 mb-7 font-light;
+    border-bottom: 1px solid #eaeaea;
+}
