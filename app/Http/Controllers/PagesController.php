@@ -17,10 +17,10 @@ class PagesController extends Controller
     } 
 
     public function index() {
-        // if (Session::get('https') != 'https'){
-        //     Session::put('https', 'https');
-        //     return redirect('https://payments-subscriptions.pivoapps.net');
-        // }
+        if (Session::get('https') != 'https'){
+            Session::put('https', 'https');
+            return redirect('https://payments-subscriptions.pivoapps.net');
+        }
         // return redirect('/checkout');
         // return env($SKey);
         return view('payments.checkout-page-null');
