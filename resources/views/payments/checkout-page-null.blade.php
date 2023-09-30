@@ -36,6 +36,7 @@
                     <div>
                         <label for="">Payment Plan</label>
                         <select name="pmt_plan" id="">
+                            <option value="0">--- Select Plan ---</option>
                             <option value="1">1 Year - ${{number_format(auth()->user()->amount, 2)}}</option>
                             <option value="2">2 Years - ${{number_format((auth()->user()->amount * 2) - (0.125 * (auth()->user()->amount * 2)), 2)}}</option>
                         </select>

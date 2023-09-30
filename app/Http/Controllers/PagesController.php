@@ -17,16 +17,20 @@ class PagesController extends Controller
     } 
 
     public function index() {
-        if (Session::get('https') != 'https'){
-            Session::put('https', 'https');
-            return redirect('https://payments-subscriptions.pivoapps.net');
-        }
+        // if (Session::get('https') != 'https'){
+        //     Session::put('https', 'https');
+        //     return redirect('https://payments-subscriptions.pivoapps.net');
+        // }
         // return redirect('/checkout');
         // return env($SKey);
         return view('payments.checkout-page-null');
     }
 
     public function passIntent(Request $request) {
+
+        if ($request->input('pmt_plan') == '0') {
+            return redirect('/')->with('warning', 'Oops..! Select plan to proceed');
+        }
 
         if (auth()->user()->status != 'no') {
             return redirect('/')->with('notification', '$'.number_format(auth()->user()->status, 2).' already paid');
